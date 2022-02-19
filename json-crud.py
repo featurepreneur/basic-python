@@ -1,4 +1,5 @@
 import json
+from pprint import pprint
 
 #Create
 FILEPATH = 'city.json'
@@ -30,11 +31,37 @@ def add_city(city, state):
     data[city] = current_data
     store_json_data(data)
 
+#Read all cities
+def get_all_city():
+    data = get_json_data()
+    
+    return data
+
+#Read single cities
+def get_single_city(city):
+
+    data = get_json_data()
+
+    if (city in data):
+        return data[city]
+
+
 def startpy():
-    city="hyderabad"
-    state = "telengana"
+    city="chennai"
+    state = "Tamil nadu"
     add_city(city, state) 
     print("creating json")
+
+    #CRUD READ 
+    cities = get_all_city()
+    pprint(cities)
+
+    # CRUD: READ single
+    city_name = 'Waterloo'
+    single_city = get_single_city(city_name)
+    print(single_city)
+    
+    
 
 if __name__ == "__main__":
     startpy()
